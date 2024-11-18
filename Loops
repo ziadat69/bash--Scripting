@@ -1,0 +1,32 @@
+There are 3 different ways to loop within a bash script: for, while and until.
+
+A for loop is used to iterate through a list and execute an action at each step. For example, if we had a list of words stored in a variable paragraph, we could use the following syntax to print each one:
+
+for word in $paragraph
+do
+  echo $word
+done
+
+to Clipboard
+
+Note that word is being “defined” at the top of the for loop so there is no $ prepended. Remember that we prepend the $ when accessing the value of the variable. So, when accessing the variable within the do block, we use $word as usual.
+
+Within bash scripting until and while are very similar. while loops keep looping while the provided condition is true whereas until loops loop until the condition is true. Conditions are established the same way as they are within an if block, between square brackets. If we want to print the index variable as long as it is less than 5, we would use the following while loop:
+
+while [ $index -lt 5 ]
+do
+  echo $index
+  index=$((index + 1))
+done
+
+to Clipboard
+
+Note that arithmetic in bash scripting uses the $((...)) syntax and within the brackets the variable name is not prepended with a $.
+
+The same loop could also be written as an until loop as follows:
+
+until [ $index -eq 5 ]
+do
+  echo $index
+  index=$((index + 1))
+done
